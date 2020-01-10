@@ -56,7 +56,7 @@
       return parent.appendChild(el); //Append the second parameter(element) to the first one
     }
 
-    const proxyURL = 'https://cors-anywhere.herokuapp.com/';
+    const proxyURL = 'http://localhost:8080/';
     const ul = document.getElementById('workplaces');
     const url = 'http://api.academicwork.net/api/adverts?country=fi';
 
@@ -78,13 +78,14 @@
           if (
             workplaces.Location === 'Espoo' ||
             workplaces.Location === 'Helsinki' ||
-            workplaces.Location === 'Vantaa'
+            workplaces.Location === 'Vantaa' ||
+            // workplaces.LogoAbsoluteUrl === 'unknown'
             // ||
             // workplace.location === 'Helsinki'
           ) {
             return workplaces;
           } else {
-            console.log('Ei toimi vielä :)');
+            console.log('Toimiikos?)');
           }
         };
 
@@ -103,7 +104,12 @@
           //   );
           // }
 
-          span.innerHTML = `${workplace.Location} ${workplace.Title}: <br> <br>  ${workplace.Requirements}`; //Make the HTML of our span to be the first and last name of our author
+          span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" style="width:200px;height:200px;">
+          <br><br>
+          Sijainti: ${workplace.Location} <br><br> Nimike: ${workplace.Title}: <br><br>
+          Kuvaus: ${workplace.LeadIn} <br> <br> Tyoaika: ${workplace.WorkExtent} <br><br>  <br><br>
+          Vaatimukset: ${workplace.Requirements}<br><br>
+          `; //Make the HTML of our span to be the first and last name of our author
           append(li, img); //Append all our elements
           append(li, span);
           append(ul, li);
