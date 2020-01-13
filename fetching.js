@@ -199,6 +199,8 @@ fetch(proxyURL + url)
       //   //   console.log('AAAAAAAAAAAAAAA' + index);
     });
 
+    //
+
     //Työn alla:
 
     // $('#carousel').carousel();
