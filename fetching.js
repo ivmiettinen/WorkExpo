@@ -14,7 +14,10 @@ function append(parent, el) {
   return parent.appendChild(el); //Append the second parameter(element) to the first one
 }
 
-function eriSivuille(item, index) {}
+// function TyopaikatEriSivuille(item, index) {
+//   var element = document.getElementsByClassName('carousel-inner');
+//   element.classList.add('item');
+// }
 
 const proxyURL = 'http://localhost:8080/';
 const ul = document.getElementById('workplaces');
@@ -31,7 +34,7 @@ fetch(proxyURL + url)
   .then(resp => resp.json()) //Transform the data into json
   .then(function(data) {
     //Here you get the data to modify as you please
-    console.log(data);
+    // console.log(data);
 
     let workplaces = data; // Get the results
 
@@ -71,12 +74,13 @@ fetch(proxyURL + url)
 
     const OnlyUusimaa = workplaces.filter(filterByLocation);
 
-    return OnlyUusimaa.map(function(workplace) {
+    var MappingThrough = OnlyUusimaa.map(function(workplace) {
       //Map throug the results and for each run the code below
 
       let li = createNode('li'), // Create the elements we need
         img = createNode('img'),
         span = createNode('span');
+      div = createNode('div');
 
       // for (i = 0; i < workplace.length; i++) {
       //   console.log('Workplace Title:' + '<br>' + workplace.Title);
@@ -90,9 +94,10 @@ fetch(proxyURL + url)
 
       //Muuttuja, josta olisi tarkoitus vapauttaa tietoja 3 kerrallaan sivustolle.
 
-      document.getElementById('Workplaces1').append(li, img); //Append all our elements
-      document.getElementById('Workplaces1').append(li, span);
-      document.getElementById('Workplaces1').append(ul, li);
+      //   document.getElementById('Workplaces1').append(li, img); //Append all our elements
+      //   document.getElementById('Workplaces1').append(li, span);
+      //   document.getElementById('Workplaces1').append(ul, li);
+      //   document.getElementById('Workplaces1').append(ul, div);
 
       //Uutta, tallennetaan tiedot muuttujiin ja käytetään niitä myöhemmin
       const muuttuja1 = [
@@ -100,15 +105,79 @@ fetch(proxyURL + url)
       ];
 
       const muuttuja2 = `Nimike: ${workplace.Title} <br><br>`;
-      console.log(muuttuja1);
-      console.log(muuttuja2);
+      //   console.log(muuttuja1);
+      //   console.log(muuttuja2);
       //   console.log(workplace.Title[i]);
+
+      return workplace;
     });
+
+    MappingThrough.forEach(function(workplace, index) {
+      //   console.log(workplace.LogoAbsoluteUrl);
+
+      //   document.getElementsByClassName('carousel-inner').innerHTML +=
+      //     '<div class="item">' + workplace.Location + '</div>';
+
+      console.log(index);
+      console.log(workplace.Title);
+
+      $(
+        '<div class="item"><img src="' +
+          workplace.LogoAbsoluteUrl +
+          '" style="width:100px;height:100px;"> ' +
+          workplace.Title +
+          '</div>'
+      ).appendTo('.carousel-inner');
+      $(
+        '<li data-target="#carousel" data-slide-to="' + index + '"></li>'
+      ).appendTo('.carousel-indicators');
+
+      //   $('<div class="item"><img src=' + workplace + '></div>');
+
+      //   var newDiv = '<div class="item"><img src=' + workplace + '></div>';
+
+      //   var newContent = document.createTextNode(workplace.LogoAbsoluteUrl);
+
+      //   element.classList.add('.carousel-inner');
+
+      //newDiv.appendChild(newContent);
+
+      //   var currentDiv = document.getElementById('Workplaces1');
+
+      //   var divi = (
+      //     '<div class="item"><img src=' +
+      //     workplace +
+      //     '></div>'
+      //   ).appendTo('.carousel-inner');
+      //   $(
+      //     '<li data-target="#carousel" data-slide-to="' + index + '"></li>'
+      //   ).appendTo('.carousel-indicators');
+      //   //   console.log('AAAAAAAAAAAAAAA' + index);
+    });
+
+    //Työn alla:
+
+    // $('#carousel').carousel();
+    // $('.carousel-indicators > li')
+    //   .first()
+    //   .addClass('active');
+    // $('.carousel-item')
+    //   .first()
+    //   .addClass('active');
   })
   .catch(function(error) {
     //errorien catchaus
     console.log(error);
   });
+
+// ------------    SHOW CAROUSEL    -------------
+// $('#carousel').carousel();
+// $('.carousel-indicators > li')
+//   .first()
+//   .addClass('active');
+// $('.carousel-item')
+//   .first()
+//   .addClass('active');
 
 /*
 Kuvaus: ${workplace.LeadIn} <br> <br> Tyoaika: ${workplace.WorkExtent} <br><br>  <br><br>
