@@ -24,11 +24,11 @@ const ul = document.getElementById('workplaces');
 const url = 'http://api.academicwork.net/api/adverts?country=fi';
 
 //Still necessary?:
-const workplaces = data => {
-  if (workplace.Location === 'Espoo') {
-    return workplace;
-  }
-};
+// const workplaces = data => {
+//   if (workplace.Location === 'Espoo') {
+//     return workplace;
+//   }
+// };
 
 fetch(proxyURL + url)
   .then(resp => resp.json()) //Transform the data into json
@@ -111,7 +111,7 @@ fetch(proxyURL + url)
         ) {
           return workplaces;
         } else {
-          console.log('ylimääräiset?)');
+          console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
         }
       }
     };
@@ -133,22 +133,15 @@ fetch(proxyURL + url)
       //   );
       // }
 
-      span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" style="width:100px;height:100px;"> 
+      span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" style="width:200px;height:200px;"> 
         Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
 
-      //Muuttuja, josta olisi tarkoitus vapauttaa tietoja 3 kerrallaan sivustolle.
-
-      //   document.getElementById('Workplaces1').append(li, img); //Append all our elements
-      //   document.getElementById('Workplaces1').append(li, span);
-      //   document.getElementById('Workplaces1').append(ul, li);
-      //   document.getElementById('Workplaces1').append(ul, div);
-
       //Uutta, tallennetaan tiedot muuttujiin ja käytetään niitä myöhemmin
-      const muuttuja1 = [
-        `<img src="${workplace.LogoAbsoluteUrl}" style="width:100px;height:100px;">`
-      ];
+      //   const muuttuja1 = [
+      //     `<img src="${workplace.LogoAbsoluteUrl}" style="width:100px;height:100px;">`
+      //   ];
 
-      const muuttuja2 = `Nimike: ${workplace.Title} <br><br>`;
+      //   const muuttuja2 = `Nimike: ${workplace.Title} <br><br>`;
       //   console.log(muuttuja1);
       //   console.log(muuttuja2);
       //   console.log(workplace.Title[i]);
@@ -168,13 +161,21 @@ fetch(proxyURL + url)
       $(
         '<div class="item"><img src="' +
           workplace.LogoAbsoluteUrl +
-          '" style="width:100px;height:100px;"> ' +
+          '"style="width:250px; block; margin-left: auto; margin-right: auto; border-radius:5px;"> ' +
+          '<br>' +
+          '<b>' +
           workplace.Title +
+          '</b>' +
           '</div>'
       ).appendTo('.carousel-inner');
-      $(
-        '<li data-target="#carousel" data-slide-to="' + index + '"></li>'
-      ).appendTo('.carousel-indicators');
+
+      //Onko tarpeellinen: ?
+
+      //   $(
+      //     '<li data-target="#carousel" data-slide-to="' + index + '"></li>'
+      //   ).appendTo('.carousel-indicators');
+
+      //
 
       //   $('<div class="item"><img src=' + workplace + '></div>');
 
@@ -186,8 +187,6 @@ fetch(proxyURL + url)
 
       //newDiv.appendChild(newContent);
 
-      //   var currentDiv = document.getElementById('Workplaces1');
-
       //   var divi = (
       //     '<div class="item"><img src=' +
       //     workplace +
@@ -198,8 +197,6 @@ fetch(proxyURL + url)
       //   ).appendTo('.carousel-indicators');
       //   //   console.log('AAAAAAAAAAAAAAA' + index);
     });
-
-    //
 
     //Työn alla:
 
