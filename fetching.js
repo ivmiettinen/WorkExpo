@@ -168,7 +168,7 @@ fetch(proxyURL + url)
       $(
         '<div class="item"><img src="' +
           workplace.LogoAbsoluteUrl +
-          '" style="width:100px;height:100px;"> ' +
+          '" style="width:140px; po"> ' +
           workplace.Title +
           '</div>'
       ).appendTo('.carousel-inner');
