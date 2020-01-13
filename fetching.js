@@ -34,45 +34,89 @@ fetch(proxyURL + url)
   .then(resp => resp.json()) //Transform the data into json
   .then(function(data) {
     //Here you get the data to modify as you please
-    // console.log(data);
 
     let workplaces = data; // Get the results
 
-    const filterByLocation = workplaces => {
-      if (
-        workplaces.Location === 'Espoo' ||
-        workplaces.Location === 'Helsinki' ||
-        workplaces.Location === 'Vantaa' ||
-        workplaces.Location === 'Hanko' ||
-        workplaces.Location === 'Hyvinkää' ||
-        workplaces.Location === 'Inkoo' ||
-        workplaces.Location === 'Järvenpää' ||
-        workplaces.Location === 'Kerava' ||
-        workplaces.Location === 'Kirkkonummi' ||
-        workplaces.Location === 'Lohja' ||
-        workplaces.Location === 'Loviisa' ||
-        workplaces.Location === 'Nurmijärvi' ||
-        workplaces.Location === 'Mäntsälä' ||
-        workplaces.Location === 'Porvoo' ||
-        workplaces.Location === 'Pääkaupunkiseutu' ||
-        workplaces.Location === 'Raasepori' ||
-        workplaces.Location === 'Riihimäki' ||
-        workplaces.Location === 'Sipoo' ||
-        workplaces.Location === 'Siuntio' ||
-        workplaces.Location === 'Tuusula' ||
-        workplaces.Location === 'Vantaa' ||
-        workplaces.Location === 'Vihti' ||
-        workplaces.LogoAbsoluteUrl === '(unknown)'
-        // ||
-        // workplace.location === 'Helsinki'
-      ) {
-        return workplaces;
-      } else {
-        console.log('Toimiikos?)');
+    console.log(data);
+
+    //Ensimmäinen:
+
+    // function myFunction(workplaces, index) {
+    //   var index = [index];
+
+    //   //   var AllTheWorks = index.slice(-1).pop();
+
+    //   var last = index[index.length - 1];
+
+    //   console.log('a:' + last);
+    // }
+
+    //Toinen:
+
+    // myFunction(workplaces, index);
+
+    // workplaces.forEach(function(workplace, index) {
+    //   //   console.log(workplace.LogoAbsoluteUrl);
+
+    //   //   document.getElementsByClassName('carousel-inner').innerHTML +=
+    //   //     '<div class="item">' + workplace.Location + '</div>';
+
+    //   var index = [index];
+
+    //   //   var AllTheWorks = index.slice(-1).pop();
+
+    //   var last = index[index.length - 1];
+
+    //   console.log('a:' + last);
+
+    //   console.log('1:' + index);
+    //   console.log('2' + workplace.Title);
+    //   console.log(workplace.length);
+    // });
+
+    //
+
+    const filterByLocationAndImg = workplaces => {
+      if (workplaces.LogoAbsoluteUrl !== '') {
+        // console.log(
+        //   'Tässä vain linkin sisältävät: ' + workplaces.LogoAbsoluteUrl
+        // );
+
+        if (
+          workplaces.Location === 'Espoo' ||
+          workplaces.Location === 'Helsinki' ||
+          workplaces.Location === 'Vantaa' ||
+          workplaces.Location === 'Hanko' ||
+          workplaces.Location === 'Hyvinkää' ||
+          workplaces.Location === 'Inkoo' ||
+          workplaces.Location === 'Järvenpää' ||
+          workplaces.Location === 'Kerava' ||
+          workplaces.Location === 'Kirkkonummi' ||
+          workplaces.Location === 'Lohja' ||
+          workplaces.Location === 'Loviisa' ||
+          workplaces.Location === 'Nurmijärvi' ||
+          workplaces.Location === 'Mäntsälä' ||
+          workplaces.Location === 'Porvoo' ||
+          workplaces.Location === 'Pääkaupunkiseutu' ||
+          workplaces.Location === 'Raasepori' ||
+          workplaces.Location === 'Riihimäki' ||
+          workplaces.Location === 'Sipoo' ||
+          workplaces.Location === 'Siuntio' ||
+          workplaces.Location === 'Tuusula' ||
+          workplaces.Location === 'Vantaa' ||
+          workplaces.Location === 'Vihti'
+
+          // ||
+          // workplace.location === 'Helsinki'
+        ) {
+          return workplaces;
+        } else {
+          console.log('ylimääräiset?)');
+        }
       }
     };
 
-    const OnlyUusimaa = workplaces.filter(filterByLocation);
+    const OnlyUusimaa = workplaces.filter(filterByLocationAndImg);
 
     var MappingThrough = OnlyUusimaa.map(function(workplace) {
       //Map throug the results and for each run the code below
@@ -90,7 +134,7 @@ fetch(proxyURL + url)
       // }
 
       span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" style="width:100px;height:100px;"> 
-      Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
+        Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
 
       //Muuttuja, josta olisi tarkoitus vapauttaa tietoja 3 kerrallaan sivustolle.
 
@@ -180,8 +224,7 @@ fetch(proxyURL + url)
 //   .addClass('active');
 
 /*
-Kuvaus: ${workplace.LeadIn} <br> <br> Tyoaika: ${workplace.WorkExtent} <br><br>  <br><br>
-            Vaatimukset: ${workplace.Requirements}<br><br>
-
-            Sijainti: ${workplace.Location} <br><br>
-  */
+  Kuvaus: ${workplace.LeadIn} <br> <br> Tyoaika: ${workplace.WorkExtent} <br><br>  <br><br>
+              Vaatimukset: ${workplace.Requirements}<br><br>
+              Sijainti: ${workplace.Location} <br><br>
+    */
