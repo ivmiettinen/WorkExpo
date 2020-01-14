@@ -14,21 +14,9 @@ function append(parent, el) {
   return parent.appendChild(el); //Append the second parameter(element) to the first one
 }
 
-// function TyopaikatEriSivuille(item, index) {
-//   var element = document.getElementsByClassName('carousel-inner');
-//   element.classList.add('item');
-// }
-
 const proxyURL = 'http://localhost:8080/';
 const ul = document.getElementById('workplaces');
 const url = 'http://api.academicwork.net/api/adverts?country=fi';
-
-//Still necessary?:
-// const workplaces = data => {
-//   if (workplace.Location === 'Espoo') {
-//     return workplace;
-//   }
-// };
 
 fetch(proxyURL + url)
   .then(resp => resp.json()) //Transform the data into json
@@ -37,53 +25,11 @@ fetch(proxyURL + url)
 
     let workplaces = data; // Get the results
 
-    // console.log(data);
-
-    //Ensimmäinen:
-
-    // function myFunction(workplaces, index) {
-    //   var index = [index];
-
-    //   //   var AllTheWorks = index.slice(-1).pop();
-
-    //   var last = index[index.length - 1];
-
-    //   console.log('a:' + last);
-    // }
-
-    //Toinen:
-
-    // myFunction(workplaces, index);
-
-    // workplaces.forEach(function(workplace, index) {
-    //   //   console.log(workplace.LogoAbsoluteUrl);
-
-    //   //   document.getElementsByClassName('carousel-inner').innerHTML +=
-    //   //     '<div class="item">' + workplace.Location + '</div>';
-
-    //   var index = [index];
-
-    //   //   var AllTheWorks = index.slice(-1).pop();
-
-    //   var last = index[index.length - 1];
-
-    //   console.log('a:' + last);
-
-    //   console.log('1:' + index);
-    //   console.log('2' + workplace.Title);
-    //   console.log(workplace.length);
-    // });
-
-    //
-
-    const filterByLocationAndImg = workplaces => {
-      if (workplaces.LogoAbsoluteUrl !== '') {
-        // console.log(
-        //   'Tässä vain linkin sisältävät: ' + workplaces.LogoAbsoluteUrl
-        // );
-
-        if (
+    function WorkplacesInUusimaa() {
+      const OnlyUusimaa1 = workplaces.filter(
+        workplaces =>
           workplaces.Location === 'Espoo' ||
+          workplaces.Location === 'Helsinki' ||
           workplaces.Location === 'Helsinki' ||
           workplaces.Location === 'Vantaa' ||
           workplaces.Location === 'Hanko' ||
@@ -105,10 +51,69 @@ fetch(proxyURL + url)
           workplaces.Location === 'Tuusula' ||
           workplaces.Location === 'Vantaa' ||
           workplaces.Location === 'Vihti'
+      );
+      console.log('OnlyUusimaa' + OnlyUusimaa1.length);
+      return OnlyUusimaa1.length;
+    }
 
-          // ||
-          // workplace.location === 'Helsinki'
-        ) {
+    document.getElementById('Information').innerHTML =
+      'Academic Workilla on Uudellamaalla avoinna ' +
+      WorkplacesInUusimaa() +
+      ' työpaikkaa.';
+
+    // var MappingThrough1 = MappingThrough;
+
+    // MappingThrough1(function(workplaces) {
+
+    // })
+
+    //Toimiva workplacen etsintä:
+
+    // function NumberOfWorkplaces() {
+    //   for (var i = 0; i < workplaces.length; i++) {
+    //     if ((i = workplaces.length)) {
+    //       console.log('Last number:' + i);
+    //     }
+
+    //     return i;
+    //   }
+    // }
+
+    const filterByLocationAndImg = workplaces => {
+      //Kaikki kaupungit uudelta maalta:
+      const OnlyUusimaa1 =
+        workplaces.Location === 'Espoo' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Hanko' ||
+        workplaces.Location === 'Hyvinkää' ||
+        workplaces.Location === 'Inkoo' ||
+        workplaces.Location === 'Järvenpää' ||
+        workplaces.Location === 'Kerava' ||
+        workplaces.Location === 'Kirkkonummi' ||
+        workplaces.Location === 'Lohja' ||
+        workplaces.Location === 'Loviisa' ||
+        workplaces.Location === 'Nurmijärvi' ||
+        workplaces.Location === 'Mäntsälä' ||
+        workplaces.Location === 'Porvoo' ||
+        workplaces.Location === 'Pääkaupunkiseutu' ||
+        workplaces.Location === 'Raasepori' ||
+        workplaces.Location === 'Riihimäki' ||
+        workplaces.Location === 'Sipoo' ||
+        workplaces.Location === 'Siuntio' ||
+        workplaces.Location === 'Tuusula' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Vihti';
+
+      //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
+      if (workplaces.LogoAbsoluteUrl !== '') {
+        // console.log(
+        //   'Tässä vain linkin sisältävät: ' + workplaces.LogoAbsoluteUrl
+        // );
+
+        if (OnlyUusimaa1) {
+          console.log('Tässä: ' + workplaces.Location);
           return workplaces;
         } else {
           //   console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
@@ -134,7 +139,7 @@ fetch(proxyURL + url)
       // }
 
       span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" style="width:200px;height:200px;"> 
-        Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
+          Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
 
       //Uutta, tallennetaan tiedot muuttujiin ja käytetään niitä myöhemmin
       //   const muuttuja1 = [
@@ -149,7 +154,7 @@ fetch(proxyURL + url)
       return workplace;
     });
 
-    MappingThrough.forEach(function(workplace, index) {
+    MappingThrough.forEach(function(workplace) {
       //   console.log(workplace.LogoAbsoluteUrl);
 
       //   document.getElementsByClassName('carousel-inner').innerHTML +=
@@ -165,6 +170,9 @@ fetch(proxyURL + url)
           '<br>' +
           '<b>' +
           workplace.Title +
+          '<br>' +
+          workplace.Location +
+          '<br>' +
           '</b>' +
           '</div>'
       ).appendTo('.carousel-inner');
@@ -213,7 +221,7 @@ fetch(proxyURL + url)
 //   .addClass('active');
 
 /*
-  Kuvaus: ${workplace.LeadIn} <br> <br> Tyoaika: ${workplace.WorkExtent} <br><br>  <br><br>
-              Vaatimukset: ${workplace.Requirements}<br><br>
-              Sijainti: ${workplace.Location} <br><br>
-    */
+    Kuvaus: ${workplace.LeadIn} <br> <br> Tyoaika: ${workplace.WorkExtent} <br><br>  <br><br>
+                Vaatimukset: ${workplace.Requirements}<br><br>
+                Sijainti: ${workplace.Location} <br><br>
+      */
