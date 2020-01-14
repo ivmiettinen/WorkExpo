@@ -37,7 +37,7 @@ fetch(proxyURL + url)
 
     let workplaces = data; // Get the results
 
-    console.log(data);
+    // console.log(data);
 
     //Ensimmäinen:
 
@@ -111,7 +111,7 @@ fetch(proxyURL + url)
         ) {
           return workplaces;
         } else {
-          console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
+          //   console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
         }
       }
     };
@@ -155,8 +155,8 @@ fetch(proxyURL + url)
       //   document.getElementsByClassName('carousel-inner').innerHTML +=
       //     '<div class="item">' + workplace.Location + '</div>';
 
-      console.log(index);
-      console.log(workplace.Title);
+      //   console.log(index);
+      //   console.log(workplace.Title);
 
       $(
         '<div class="item"><img src="' +
@@ -176,16 +176,6 @@ fetch(proxyURL + url)
       //   ).appendTo('.carousel-indicators');
 
       //
-
-      //   $('<div class="item"><img src=' + workplace + '></div>');
-
-      //   var newDiv = '<div class="item"><img src=' + workplace + '></div>';
-
-      //   var newContent = document.createTextNode(workplace.LogoAbsoluteUrl);
-
-      //   element.classList.add('.carousel-inner');
-
-      //newDiv.appendChild(newContent);
 
       //   var divi = (
       //     '<div class="item"><img src=' +
