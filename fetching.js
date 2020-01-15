@@ -55,34 +55,10 @@ fetch(proxyURL + url)
 
     function filterByLocationAndImg(workplaces) {
       //Kaikki kaupungit uudelta maalta:
-      const OnlyUusimaa1 =
-        workplaces.Location === 'Espoo' ||
-        workplaces.Location === 'Helsinki' ||
-        workplaces.Location === 'Helsinki' ||
-        workplaces.Location === 'Vantaa' ||
-        workplaces.Location === 'Hanko' ||
-        workplaces.Location === 'Hyvinkää' ||
-        workplaces.Location === 'Inkoo' ||
-        workplaces.Location === 'Järvenpää' ||
-        workplaces.Location === 'Kerava' ||
-        workplaces.Location === 'Kirkkonummi' ||
-        workplaces.Location === 'Lohja' ||
-        workplaces.Location === 'Loviisa' ||
-        workplaces.Location === 'Nurmijärvi' ||
-        workplaces.Location === 'Mäntsälä' ||
-        workplaces.Location === 'Porvoo' ||
-        workplaces.Location === 'Pääkaupunkiseutu' ||
-        workplaces.Location === 'Raasepori' ||
-        workplaces.Location === 'Riihimäki' ||
-        workplaces.Location === 'Sipoo' ||
-        workplaces.Location === 'Siuntio' ||
-        workplaces.Location === 'Tuusula' ||
-        workplaces.Location === 'Vantaa' ||
-        workplaces.Location === 'Vihti';
 
       //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
       if (workplaces.LogoAbsoluteUrl !== '') {
-        if (OnlyUusimaa1) {
+        if (WorkplacesInUusimaa) {
           //   console.log('Uusimaan kohteet: ' + workplaces.Location);
           return workplaces;
         } else {
