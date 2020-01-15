@@ -1,36 +1,53 @@
-.carousel-inner {
+@font-face {
+  font-family: "Awesome";
+  src: url("fonts/Awesome-Semibold.otf") format("opentype");
+}
+.carousel-inner > .item, .item.active, .item.active.left, .item.active.right {
   position: fixed;
   width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  z-index: 10;
+  left: 50%;
+  top: 20%;
+  font-size: 50px;
+  font-family: "Awesome";
+  color: #047364;
+  height: 500px;
+  background-color: rgba(255, 255, 255, 0.795);
+  filter:drop-shadow(8px 8px 10px gray);
+  
   text-align: center;
 }
-.item {
-  top: 50%;
-  left: 50%;
-  font-size: 25px;
-}
-.item.left {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
 .Workplaces1 {
   padding: 10%;
-  top: 90%;
   text-align: center;
   font-size: 25px;
+  font-family: "Awesome";
+  position: relative;
+  height: 500px;
 }
 
 .Workplaces2 {
   top: 50%;
   text-align: center;
   font-size: 25px;
+  font-family: "Awesome";
 }
 
+body, html {
+  font-family: "Awesome";
+  height: 100%;
+  background-image: url("https://images.contentstack.io/v3/assets/blt669635e378bd03a5/bltc786b4ddd4bb733f/5d1de1824e14f34e963a2a53/AW_image49_1200x600.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+<<<<<<< HEAD
+.carousel img {
+  margin: 20px;
+  padding: 20px;
+  top: 10%;
+=======
 .Information {
   padding: 10%;
   top: 90%;
@@ -40,4 +57,5 @@
 
 body {
   background-color: rgb(160, 255, 203);
+>>>>>>> 9e7d11c18fa5b7a2300da00ff0af56f8834bd6a3
 }
