@@ -161,7 +161,7 @@ fetch(proxyURL + url)
       $(
         '<div class="item"><img src="' +
           workplace.LogoAbsoluteUrl +
-          '"style="width:250px; block; margin-left: auto; margin-right: auto; border-radius:5px;"> ' +
+          '"style="width:250px; max-height:230px; block; margin-left: auto; margin-right: auto; border-radius:5px;"> ' +
           '<br>' +
           '<b>' +
           workplace.Title +
