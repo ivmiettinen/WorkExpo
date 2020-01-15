@@ -9,11 +9,10 @@
   top: 20%;
   font-size: 50px;
   font-family: "Awesome";
-  color: #047364;
+  color: #012d28;
   height: 500px;
-  background-color: rgba(255, 255, 255, 0.795);
+  background-color: rgba(255, 255, 255, 0.719);
   filter:drop-shadow(8px 8px 10px gray);
-  
   text-align: center;
 }
 .Workplaces1 {
@@ -27,7 +26,6 @@
 
 .Workplaces2 {
   top: 50%;
-  text-align: center;
   font-size: 25px;
   font-family: "Awesome";
 }
@@ -42,20 +40,36 @@ body, html {
   background-size: cover;
 }
 
-<<<<<<< HEAD
 .carousel img {
   margin: 20px;
   padding: 20px;
   top: 10%;
-=======
-.Information {
-  padding: 10%;
-  top: 90%;
-  text-align: center;
-  font-size: 25px;
 }
-
-body {
-  background-color: rgb(160, 255, 203);
->>>>>>> 9e7d11c18fa5b7a2300da00ff0af56f8834bd6a3
+.Information {
+  font-size: 20px;
+  text-align: center;
+}
+.kaupunki {
+  color: #012d28;
+  font-size: 40px;
+  position: absolute;
+  top: 400px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.nimike {
+  position: absolute;
+  top: 240px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #049a78;
+}
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
 }

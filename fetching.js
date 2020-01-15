@@ -109,17 +109,22 @@ fetch(proxyURL + url)
 
     MappingThrough.forEach(function(workplace) {
       $(
-        '<div class="item"><img src="' +
+        '<div class="item">' + 
+          '<div class="logo"><img src="' +
           workplace.LogoAbsoluteUrl +
           '"style="width:250px; max-height:230px; block; margin-left: auto; margin-right: auto; border-radius:5px;"> ' +
           '<br>' +
           '<b>' +
+          '</div>' +
+          '<div class="nimike">' +
           workplace.Title +
-          '<br>' +
+          '</div>' +
+          '<div class="kaupunki">' +
           workplace.Location +
+          '</div>' +
           '<br>' +
           '</b>' +
-          '</div>'
+        '</div>'
       ).appendTo('.carousel-inner');
     });
   })
