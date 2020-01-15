@@ -1,3 +1,11 @@
+// fetch('http://api.academicwork.net/api/locations?country=fi')
+//   .then(response => {
+//     return response.json();
+//   })
+//   .then(myJson => {
+//     console.log(myJson);
+//   });
+
 function createNode(element) {
   return document.createElement(element); //Create the type of element you pass in the parametrs
 }
@@ -53,7 +61,25 @@ fetch(proxyURL + url)
       WorkplacesInUusimaa() +
       ' työpaikkaa.';
 
-    function filterByLocationAndImg(workplaces) {
+    // var MappingThrough1 = MappingThrough;
+
+    // MappingThrough1(function(workplaces) {
+
+    // })
+
+    //Toimiva workplacen etsintä:
+
+    // function NumberOfWorkplaces() {
+    //   for (var i = 0; i < workplaces.length; i++) {
+    //     if ((i = workplaces.length)) {
+    //       console.log('Last number:' + i);
+    //     }
+
+    //     return i;
+    //   }
+    // }
+
+    const filterByLocationAndImg = workplaces => {
       //Kaikki kaupungit uudelta maalta:
       const OnlyUusimaa1 =
         workplaces.Location === 'Espoo' ||
@@ -82,14 +108,18 @@ fetch(proxyURL + url)
 
       //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
       if (workplaces.LogoAbsoluteUrl !== '') {
+        // console.log(
+        //   'Tässä vain linkin sisältävät: ' + workplaces.LogoAbsoluteUrl
+        // );
+
         if (OnlyUusimaa1) {
-          console.log('Uusimaan kohteet: ' + workplaces.Location);
+          console.log('Tässä: ' + workplaces.Location);
           return workplaces;
         } else {
           //   console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
         }
       }
-    }
+    };
 
     const OnlyUusimaa = workplaces.filter(filterByLocationAndImg);
 
@@ -101,13 +131,38 @@ fetch(proxyURL + url)
         span = createNode('span');
       div = createNode('div');
 
+      // for (i = 0; i < workplace.length; i++) {
+      //   console.log('Workplace Title:' + '<br>' + workplace.Title);
+      //   console.log(
+      //     'Workplace Requirements:' + '<br>' + workplace.Requirements
+      //   );
+      // }
+
       span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" style="width:200px;height:200px;"> 
           Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
+
+      //Uutta, tallennetaan tiedot muuttujiin ja käytetään niitä myöhemmin
+      //   const muuttuja1 = [
+      //     `<img src="${workplace.LogoAbsoluteUrl}" style="width:100px;height:100px;">`
+      //   ];
+
+      //   const muuttuja2 = `Nimike: ${workplace.Title} <br><br>`;
+      //   console.log(muuttuja1);
+      //   console.log(muuttuja2);
+      //   console.log(workplace.Title[i]);
 
       return workplace;
     });
 
     MappingThrough.forEach(function(workplace) {
+      //   console.log(workplace.LogoAbsoluteUrl);
+
+      //   document.getElementsByClassName('carousel-inner').innerHTML +=
+      //     '<div class="item">' + workplace.Location + '</div>';
+
+      //   console.log(index);
+      //   console.log(workplace.Title);
+
       $(
         '<div class="item"><img src="' +
           workplace.LogoAbsoluteUrl +
@@ -121,9 +176,52 @@ fetch(proxyURL + url)
           '</b>' +
           '</div>'
       ).appendTo('.carousel-inner');
+
+      //Onko tarpeellinen: ?
+
+      //   $(
+      //     '<li data-target="#carousel" data-slide-to="' + index + '"></li>'
+      //   ).appendTo('.carousel-indicators');
+
+      //
+
+      //   var divi = (
+      //     '<div class="item"><img src=' +
+      //     workplace +
+      //     '></div>'
+      //   ).appendTo('.carousel-inner');
+      //   $(
+      //     '<li data-target="#carousel" data-slide-to="' + index + '"></li>'
+      //   ).appendTo('.carousel-indicators');
+      //   //   console.log('AAAAAAAAAAAAAAA' + index);
     });
+
+    //Työn alla:
+
+    // $('#carousel').carousel();
+    // $('.carousel-indicators > li')
+    //   .first()
+    //   .addClass('active');
+    // $('.carousel-item')
+    //   .first()
+    //   .addClass('active');
   })
   .catch(function(error) {
     //errorien catchaus
     console.log(error);
   });
+
+// ------------    SHOW CAROUSEL    -------------
+// $('#carousel').carousel();
+// $('.carousel-indicators > li')
+//   .first()
+//   .addClass('active');
+// $('.carousel-item')
+//   .first()
+//   .addClass('active');
+
+/*
+    Kuvaus: ${workplace.LeadIn} <br> <br> Tyoaika: ${workplace.WorkExtent} <br><br>  <br><br>
+                Vaatimukset: ${workplace.Requirements}<br><br>
+                Sijainti: ${workplace.Location} <br><br>
+      */
