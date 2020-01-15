@@ -6,7 +6,7 @@ function append(parent, el) {
   return parent.appendChild(el); //Append the second parameter(element) to the first one
 }
 
-const proxyURL = 'http://localhost:8080/';
+const proxyURL = 'http://awrest-env.sze2kbkguc.us-east-2.elasticbeanstalk.com/';
 const ul = document.getElementById('workplaces');
 const url = 'http://api.academicwork.net/api/adverts?country=fi';
 
@@ -55,11 +55,34 @@ fetch(proxyURL + url)
 
     function filterByLocationAndImg(workplaces) {
       //Kaikki kaupungit uudelta maalta:
-
+      const OnlyUusimaa1 =
+        workplaces.Location === 'Espoo' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Hanko' ||
+        workplaces.Location === 'Hyvinkää' ||
+        workplaces.Location === 'Inkoo' ||
+        workplaces.Location === 'Järvenpää' ||
+        workplaces.Location === 'Kerava' ||
+        workplaces.Location === 'Kirkkonummi' ||
+        workplaces.Location === 'Lohja' ||
+        workplaces.Location === 'Loviisa' ||
+        workplaces.Location === 'Nurmijärvi' ||
+        workplaces.Location === 'Mäntsälä' ||
+        workplaces.Location === 'Porvoo' ||
+        workplaces.Location === 'Pääkaupunkiseutu' ||
+        workplaces.Location === 'Raasepori' ||
+        workplaces.Location === 'Riihimäki' ||
+        workplaces.Location === 'Sipoo' ||
+        workplaces.Location === 'Siuntio' ||
+        workplaces.Location === 'Tuusula' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Vihti';
       //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
       if (workplaces.LogoAbsoluteUrl !== '') {
-        if (WorkplacesInUusimaa) {
-          //   console.log('Uusimaan kohteet: ' + workplaces.Location);
+        if (OnlyUusimaa1) {
+          console.log('Uusimaan kohteet: ' + workplaces.Location);
           return workplaces;
         } else {
           //   console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
