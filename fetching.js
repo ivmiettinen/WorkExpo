@@ -83,7 +83,7 @@ fetch(proxyURL + url)
       //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
       if (workplaces.LogoAbsoluteUrl !== '') {
         if (OnlyUusimaa1) {
-          console.log('Uusimaan kohteet: ' + workplaces.Location);
+          //   console.log('Uusimaan kohteet: ' + workplaces.Location);
           return workplaces;
         } else {
           //   console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
