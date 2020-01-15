@@ -101,7 +101,7 @@ fetch(proxyURL + url)
         span = createNode('span');
       div = createNode('div');
 
-      span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" style="width:200px;height:200px;"> 
+      span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" > 
           Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
 
       return workplace;
@@ -112,7 +112,7 @@ fetch(proxyURL + url)
         '<div class="item">' + 
           '<div class="logo"><img src="' +
           workplace.LogoAbsoluteUrl +
-          '"style="width:250px; max-height:230px; block; margin-left: auto; margin-right: auto; border-radius:5px;"> ' +
+          '"style="width:250px"> ' +
           '<br>' +
           '<b>' +
           '</div>' +

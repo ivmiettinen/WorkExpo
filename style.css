@@ -16,13 +16,20 @@
   text-align: center;
 }
 .Workplaces1 {
-  padding: 10%;
   text-align: center;
   font-size: 25px;
   font-family: "Awesome";
   position: relative;
   height: 500px;
 }
+
+.picture{
+  display: block;
+  text-align: center;
+  
+  top:90%;
+}
+
 
 .Workplaces2 {
   top: 50%;
@@ -38,12 +45,6 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-.carousel img {
-  margin: 20px;
-  padding: 20px;
-  top: 10%;
 }
 .Information {
   font-size: 20px;
