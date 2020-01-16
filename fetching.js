@@ -112,7 +112,7 @@ fetch(proxyURL + url)
         '<div class="item">' + 
           '<div class="logo"><img src="' +
           workplace.LogoAbsoluteUrl +
-          '"style="max-height:220px;min-height:160px;max-width:500px"> ' +
+          '"style="max-height:210px;min-height:160px;max-width:500px"> ' +
           '<br>' +
           '<b>' +
           '</div>' +
