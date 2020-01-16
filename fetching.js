@@ -7,6 +7,8 @@ function append(parent, el) {
 }
 
 const proxyURL = 'http://localhost:8080/';
+//AWS beanstalk:
+//const proxyURL = 'http://awrest-env.sze2kbkguc.us-east-2.elasticbeanstalk.com/';
 const ul = document.getElementById('workplaces');
 const url = 'http://api.academicwork.net/api/adverts?country=fi';
 
@@ -49,8 +51,11 @@ fetch(proxyURL + url)
     }
 
     document.getElementById('Information').innerHTML =
-      'Academic Workilla on Uudellamaalla avoinna ' +
+      'Meillä on Uudellamaalla avoinna ' +
+      '<br>' +
+      '<span class=bigger>' +
       WorkplacesInUusimaa() +
+      '</span>' +
       ' työpaikkaa.';
 
     function filterByLocationAndImg(workplaces) {
@@ -109,7 +114,7 @@ fetch(proxyURL + url)
 
     MappingThrough.forEach(function(workplace) {
       $(
-        '<div class="item">' + 
+        '<div class="item">' +
           '<div class="logo"><img src="' +
           workplace.LogoAbsoluteUrl +
           '"style="max-height:220px;min-height:160px;max-width:500px"> ' +
@@ -124,11 +129,11 @@ fetch(proxyURL + url)
           '</div>' +
           '<br>' +
           '</b>' +
-        '</div>'
+          '</div>'
       ).appendTo('.carousel-inner');
     });
   })
   .catch(function(error) {
-    //errorien catchaus
+    //catch errors
     console.log(error);
   });
