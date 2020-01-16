@@ -6,7 +6,9 @@ function append(parent, el) {
   return parent.appendChild(el); //Append the second parameter(element) to the first one
 }
 
-const proxyURL = 'http://awrest-env.sze2kbkguc.us-east-2.elasticbeanstalk.com/';
+const proxyURL = 'http://localhost:8080/';
+//AWS beanstalk:
+//const proxyURL = 'http://awrest-env.sze2kbkguc.us-east-2.elasticbeanstalk.com/';
 const ul = document.getElementById('workplaces');
 const url = 'http://api.academicwork.net/api/adverts?country=fi';
 
