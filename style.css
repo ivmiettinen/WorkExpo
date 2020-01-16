@@ -26,10 +26,9 @@
 .picture{
   display: block;
   text-align: center;
-  
+  vertical-align: middle;
   top:90%;
 }
-
 
 .Workplaces2 {
   top: 50%;
@@ -40,7 +39,7 @@
 body, html {
   font-family: "Awesome";
   height: 100%;
-  background-image: url("https://images.contentstack.io/v3/assets/blt669635e378bd03a5/bltc786b4ddd4bb733f/5d1de1824e14f34e963a2a53/AW_image49_1200x600.jpg");
+  background-image: url("Images/AW_image17_1200x600px.jpg");
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -49,6 +48,7 @@ body, html {
 .Information {
   font-size: 20px;
   text-align: center;
+  color: white;
 }
 .kaupunki {
   color: #012d28;
