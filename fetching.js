@@ -115,7 +115,7 @@ fetch(proxyURL + url)
         '<div class="item">' +
           '<div class="logo"><img src="' +
           workplace.LogoAbsoluteUrl +
-          '"style="width:250px"> ' +
+          '"style="max-height:220px;min-height:160px;max-width:500px"> ' +
           '<br>' +
           '<b>' +
           '</div>' +
@@ -132,6 +132,6 @@ fetch(proxyURL + url)
     });
   })
   .catch(function(error) {
-    //errorien catchaus
+    //catch errors
     console.log(error);
   });
