@@ -1,54 +1,59 @@
 @font-face {
-  font-family: "Awesome";
-  src: url("fonts/Awesome-Semibold.otf") format("opentype");
+  font-family: 'Awesome';
+  src: url('fonts/Awesome-Semibold.otf') format('opentype');
 }
-.carousel-inner > .item, .item.active, .item.active.left, .item.active.right {
+.carousel-inner > .item,
+.item.active,
+.item.active.left,
+.item.active.right {
   position: fixed;
   width: 100%;
   left: 50%;
   top: 20%;
   font-size: 50px;
-  font-family: "Awesome";
+  font-family: 'Awesome';
   color: #012d28;
   height: 500px;
   background-color: rgba(255, 255, 255, 0.719);
-  filter:drop-shadow(8px 8px 10px gray);
+  filter: drop-shadow(8px 8px 10px gray);
   text-align: center;
 }
 .Workplaces1 {
   text-align: center;
   font-size: 25px;
-  font-family: "Awesome";
+  font-family: 'Awesome';
   position: relative;
   height: 500px;
 }
 
-.picture{
+.picture {
   display: block;
   text-align: center;
   vertical-align: middle;
-  top:90%;
+  top: 90%;
 }
 
 .Workplaces2 {
   top: 50%;
   font-size: 25px;
-  font-family: "Awesome";
+  font-family: 'Awesome';
 }
 
-body, html {
-  font-family: "Awesome";
+body,
+html {
+  font-family: 'Awesome';
   height: 100%;
-  background-image: url("Images/AW_image17_1200x600px.jpg");
+  background-image: url('Images/AW_image17_1200x600px.jpg');
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 .Information {
-  font-size: 20px;
-  text-align: center;
+  font-size: 22px;
+  text-align: right;
   color: white;
+  padding: 28px;
 }
 .kaupunki {
   color: #012d28;
@@ -66,6 +71,9 @@ body, html {
   right: 0;
   text-align: center;
   color: #049a78;
+  width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .logo {
   position: absolute;
@@ -73,4 +81,9 @@ body, html {
   left: 0;
   right: 0;
   text-align: center;
+}
+
+.bigger {
+  font-size: 200%;
+  color: rgb(5, 212, 142);
 }
