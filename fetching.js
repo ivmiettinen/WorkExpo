@@ -1,14 +1,15 @@
-function createNode(element) {
-  return document.createElement(element); //Create the type of element you pass in the parametrs
-}
+// function createNode(element) {
+//   return document.createElement(element); //Create the type of element you pass in the parametrs
+// }
 
-function append(parent, el) {
-  return parent.appendChild(el); //Append the second parameter(element) to the first one
-}
+// function append(parent, el) {
+//   return parent.appendChild(el); //Append the second parameter(element) to the first one
+// }
 
-const proxyURL = 'http://localhost:8080/';
+// const proxyURL = 'http://localhost:8080/';
+
 //AWS beanstalk:
-//const proxyURL = 'http://awrest-env.sze2kbkguc.us-east-2.elasticbeanstalk.com/';
+const proxyURL = 'http://awrest-env.sze2kbkguc.us-east-2.elasticbeanstalk.com/';
 const ul = document.getElementById('workplaces');
 const url = 'http://api.academicwork.net/api/adverts?country=fi';
 
@@ -46,7 +47,7 @@ fetch(proxyURL + url)
           workplaces.Location === 'Vantaa' ||
           workplaces.Location === 'Vihti'
       );
-      console.log('OnlyUusimaa' + OnlyUusimaa1.length);
+      // console.log('OnlyUusimaa' + OnlyUusimaa1.length);
       return OnlyUusimaa1.length;
     }
 
@@ -88,7 +89,7 @@ fetch(proxyURL + url)
       //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
       if (workplaces.LogoAbsoluteUrl !== '') {
         if (OnlyUusimaa1) {
-          //   console.log('Uusimaan kohteet: ' + workplaces.Location);
+          // console.log('Uusimaan kohteet: ' + workplaces.Location);
           return workplaces;
         } else {
           //   console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
@@ -98,21 +99,21 @@ fetch(proxyURL + url)
 
     const OnlyUusimaa = workplaces.filter(filterByLocationAndImg);
 
-    var MappingThrough = OnlyUusimaa.map(function(workplace) {
-      //Map throug the results and for each run the code below
+    // var MappingThrough = OnlyUusimaa.map(function(workplace) {
+    //   //Map throug the results and for each run the code below
 
-      let li = createNode('li'), // Create the elements we need
-        img = createNode('img'),
-        span = createNode('span');
-      div = createNode('div');
+    //   let li = createNode('li'), // Create the elements we need
+    //     img = createNode('img'),
+    //     span = createNode('span');
+    //   div = createNode('div');
 
-      span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" > 
-          Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
+    //   span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" >
+    //       Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
 
-      return workplace;
-    });
+    //   return workplace;
+    // });
 
-    MappingThrough.forEach(function(workplace) {
+    OnlyUusimaa.forEach(function(workplace) {
       $(
         '<div class="item">' +
           '<div class="logo"><img src="' +
