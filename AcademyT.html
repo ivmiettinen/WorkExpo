@@ -35,6 +35,11 @@
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    
+    <script type="text/javascript" src="jquery.qrcode.js"></script>
+    <script type="text/javascript" src="qrcode.js"></script>
+   
     <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" /> -->
     <link rel="stylesheet" type="text/css" href="style.css" />
 
@@ -72,7 +77,23 @@
             </p>
           </div>
         </div>
-        
+
+        <p>Render in table</p>
+<div id="qrcodeTable"></div>
+<p>Render in canvas</p>
+<div id="qrcodeCanvas"></div>
+
+        <!-- <script>
+          //jQuery('#qrcode').qrcode("this plugin is great");
+          jQuery('.carousel-inner').qrcode({
+            render	: "table",
+            text	: "http://yle.fi"
+          });	
+          jQuery('#qrcodeCanvas').qrcode({
+            text	: "http://jetienne.com"
+          });	
+        </script>
+         -->
 
         <!-- Left and right controls -->
         <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -93,6 +114,7 @@
     <ul id="workplaces"></ul>
 
     <script src="fetching.js"></script>
+
 
     
 

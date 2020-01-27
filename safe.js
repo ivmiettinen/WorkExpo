@@ -1,87 +1,142 @@
-// <!DOCTYPE html>
+// function createNode(element) {
+//   return document.createElement(element); //Create the type of element you pass in the parametrs
+// }
 
-// <html lang="en-US">
-//   <head>
-//     <title>Academyn työpaikat</title>
+// function append(parent, el) {
+//   return parent.appendChild(el); //Append the second parameter(element) to the first one
+// }
 
-//     <!-- <script type="text/javascript" src="academyFetching.js"></script> -->
-//   </head>
+// const proxyURL = 'http://localhost:8080/';
 
-//   <body>
-//     <h1>Tyopaikat</h1>
+//AWS beanstalk:
+const proxyURL = 'http://awrest-env.sze2kbkguc.us-east-2.elasticbeanstalk.com/';
+const ul = document.getElementById('workplaces');
+const url = 'http://api.academicwork.net/api/adverts?country=fi';
 
-//     <h1 id="Workplaces"></h1>
+fetch(proxyURL + url)
+  .then(resp => resp.json()) //Transform the data into json
+  .then(function(data) {
+    //Here you get the data to modify as you please
 
-//     <ul id="workplaces"></ul>
-//   </body>
+    let workplaces = data; // Get the results
 
-//   <script>
-//     async function postData(
-//       url = 'http://api.academicwork.net/api/locations?country=fi',
-//       data = {}
-//     ) {
-//       // Default options are marked with *
-//       const response = await fetch(url, {
-//         method: 'POST', // *GET, POST, PUT, DELETE, etc.
-//         mode: 'cors', // no-cors, *cors, same-origin
-//         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-//         credentials: 'same-origin', // include, *same-origin, omit
-//         headers: {
-//           'Content-Type': 'application/json'
-//           // 'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//         redirect: 'follow', // manual, *follow, error
-//         referrerPolicy: 'no-referrer', // no-referrer, *client
-//         body: JSON.stringify(data) // body data type must match "Content-Type" header
-//       });
-//       return await response.json(); // parses JSON response into native JavaScript objects
-//       console.log(data);
-//     }
-//   </script>
+    // console.log(workplaces);
 
-//   <script>
-//     // fetch('http://api.academicwork.net/api/locations?country=fi')
-//     //   .then(response => {
-//     //     return response.json();
-//     //   })
-//     //   .then(myJson => {
-//     //     console.log(myJson);
-//     //   });
+    function WorkplacesInUusimaa() {
+      const OnlyUusimaa1 = workplaces.filter(
+        workplaces =>
+          workplaces.Location === 'Espoo' ||
+          workplaces.Location === 'Helsinki' ||
+          workplaces.Location === 'Helsinki' ||
+          workplaces.Location === 'Vantaa' ||
+          workplaces.Location === 'Hanko' ||
+          workplaces.Location === 'Hyvinkää' ||
+          workplaces.Location === 'Inkoo' ||
+          workplaces.Location === 'Järvenpää' ||
+          workplaces.Location === 'Kerava' ||
+          workplaces.Location === 'Kirkkonummi' ||
+          workplaces.Location === 'Lohja' ||
+          workplaces.Location === 'Loviisa' ||
+          workplaces.Location === 'Nurmijärvi' ||
+          workplaces.Location === 'Mäntsälä' ||
+          workplaces.Location === 'Porvoo' ||
+          workplaces.Location === 'Pääkaupunkiseutu' ||
+          workplaces.Location === 'Raasepori' ||
+          workplaces.Location === 'Riihimäki' ||
+          workplaces.Location === 'Sipoo' ||
+          workplaces.Location === 'Siuntio' ||
+          workplaces.Location === 'Tuusula' ||
+          workplaces.Location === 'Vantaa' ||
+          workplaces.Location === 'Vihti'
+      );
+      console.log('OnlyUusimaa' + OnlyUusimaa1.length);
+      return OnlyUusimaa1.length;
+    }
 
-//     function createNode(element) {
-//       return document.createElement(element); //Create the type of element you pass in the parametrs
-//     }
+    document.getElementById('Information').innerHTML =
+      'Meillä on Uudellamaalla avoinna ' +
+      '<br>' +
+      '<span class=bigger>' +
+      WorkplacesInUusimaa() +
+      '</span>' +
+      ' työpaikkaa.';
 
-//     function append(parent, el) {
-//       return parent.appendChild(el); //Append the second parameter(element) to the first one
-//     }
+    function filterByLocationAndImg(workplaces) {
+      //Kaikki kaupungit uudelta maalta:
+      const OnlyUusimaa1 =
+        workplaces.Location === 'Espoo' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Hanko' ||
+        workplaces.Location === 'Hyvinkää' ||
+        workplaces.Location === 'Inkoo' ||
+        workplaces.Location === 'Järvenpää' ||
+        workplaces.Location === 'Kerava' ||
+        workplaces.Location === 'Kirkkonummi' ||
+        workplaces.Location === 'Lohja' ||
+        workplaces.Location === 'Loviisa' ||
+        workplaces.Location === 'Nurmijärvi' ||
+        workplaces.Location === 'Mäntsälä' ||
+        workplaces.Location === 'Porvoo' ||
+        workplaces.Location === 'Pääkaupunkiseutu' ||
+        workplaces.Location === 'Raasepori' ||
+        workplaces.Location === 'Riihimäki' ||
+        workplaces.Location === 'Sipoo' ||
+        workplaces.Location === 'Siuntio' ||
+        workplaces.Location === 'Tuusula' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Vihti';
 
-//     const ul = document.getElementById('workplaces');
-//     const url = 'http://api.academicwork.net/api/adverts?country=fi';
+      //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
+      if (workplaces.LogoAbsoluteUrl !== '') {
+        if (OnlyUusimaa1) {
+          // console.log('Uusimaan kohteet: ' + workplaces.Location);
+          return workplaces;
+        } else {
+          //   console.log('ylimääräisiä kaupunkeja: ' + workplaces.Location);
+        }
+      }
+    }
 
-//     fetch(url)
-//       .then(resp => resp.json()) //Transform the data into json
-//       .then(function(data) {
-//         //Here you get the data to modify as you please
-//         console.log(data);
+    const OnlyUusimaa = workplaces.filter(filterByLocationAndImg);
 
-//         let workplaces = data.ArrayOfAdvertItem; // Get the results
-//         return workplaces.map(function(author) {
-//           //Map throug the results and for each run the code below
-//           let li = createNode('li'), // Create the elements we need
-//             img = createNode('img'),
-//             span = createNode('span');
+    var MappingThrough = OnlyUusimaa.map(function(workplace) {
+      //Map throug the results and for each run the code below
 
-//           img.src = author.picture.medium; // Add the source of the image to be the src or the img element
-//           span.innerHTML = `${author.name.first} ${author.name.last}`; //Make the HTML of our span to be the first and last name of our author
-//           append(li, img); //Append all our elements
-//           append(li, span);
-//           append(ul, li);
-//         });
-//       })
-//       .catch(function(error) {
-//         //errorien catchaus
-//         console.log(error);
-//       });
-//   </script>
-// </html>
+      // let li = createNode('li'), // Create the elements we need
+      //   img = createNode('img'),
+      //   span = createNode('span');
+      // div = createNode('div');
+
+      // span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" >
+      //     Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
+
+      return workplace;
+    });
+
+    MappingThrough.forEach(function(workplace) {
+      $(
+        '<div class="item">' +
+          '<div class="logo"><img src="' +
+          workplace.LogoAbsoluteUrl +
+          '"style="max-height:210px;min-height:160px;max-width:500px"> ' +
+          '<br>' +
+          '<b>' +
+          '</div>' +
+          '<div class="nimike">' +
+          workplace.Title +
+          '</div>' +
+          '<div class="kaupunki">' +
+          workplace.Location +
+          '</div>' +
+          '<br>' +
+          '</b>' +
+          '</div>'
+      ).appendTo('.carousel-inner');
+    });
+  })
+  .catch(function(error) {
+    //catch errors
+    console.log(error);
+  });
