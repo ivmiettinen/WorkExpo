@@ -20,34 +20,40 @@ fetch(proxyURL + url)
 
     let workplaces = data; // Get the results
 
-    function WorkplacesInUusimaa() {
-      const OnlyUusimaa1 = workplaces.filter(
-        workplaces =>
-          workplaces.Location === 'Espoo' ||
-          workplaces.Location === 'Helsinki' ||
-          workplaces.Location === 'Helsinki' ||
-          workplaces.Location === 'Vantaa' ||
-          workplaces.Location === 'Hanko' ||
-          workplaces.Location === 'Hyvinkää' ||
-          workplaces.Location === 'Inkoo' ||
-          workplaces.Location === 'Järvenpää' ||
-          workplaces.Location === 'Kerava' ||
-          workplaces.Location === 'Kirkkonummi' ||
-          workplaces.Location === 'Lohja' ||
-          workplaces.Location === 'Loviisa' ||
-          workplaces.Location === 'Nurmijärvi' ||
-          workplaces.Location === 'Mäntsälä' ||
-          workplaces.Location === 'Porvoo' ||
-          workplaces.Location === 'Pääkaupunkiseutu' ||
-          workplaces.Location === 'Raasepori' ||
-          workplaces.Location === 'Riihimäki' ||
-          workplaces.Location === 'Sipoo' ||
-          workplaces.Location === 'Siuntio' ||
-          workplaces.Location === 'Tuusula' ||
-          workplaces.Location === 'Vantaa' ||
-          workplaces.Location === 'Vihti'
+    // console.log(workplaces);
+
+    const UusimaaWorkplaces = function(workplaces) {
+      return (
+        workplaces.Location === 'Espoo' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Helsinki' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Hanko' ||
+        workplaces.Location === 'Hyvinkää' ||
+        workplaces.Location === 'Inkoo' ||
+        workplaces.Location === 'Järvenpää' ||
+        workplaces.Location === 'Kerava' ||
+        workplaces.Location === 'Kirkkonummi' ||
+        workplaces.Location === 'Lohja' ||
+        workplaces.Location === 'Loviisa' ||
+        workplaces.Location === 'Nurmijärvi' ||
+        workplaces.Location === 'Mäntsälä' ||
+        workplaces.Location === 'Porvoo' ||
+        workplaces.Location === 'Pääkaupunkiseutu' ||
+        workplaces.Location === 'Raasepori' ||
+        workplaces.Location === 'Riihimäki' ||
+        workplaces.Location === 'Sipoo' ||
+        workplaces.Location === 'Siuntio' ||
+        workplaces.Location === 'Tuusula' ||
+        workplaces.Location === 'Vantaa' ||
+        workplaces.Location === 'Vihti'
       );
+    };
+
+    function UusimaaNumber() {
+      const OnlyUusimaa1 = workplaces.filter(UusimaaWorkplaces);
       // console.log('OnlyUusimaa' + OnlyUusimaa1.length);
+      // console.log(OnlyUusimaa1);
       return OnlyUusimaa1.length;
     }
 
@@ -55,13 +61,13 @@ fetch(proxyURL + url)
       'Meillä on Uudellamaalla avoinna ' +
       '<br>' +
       '<span class=bigger>' +
-      WorkplacesInUusimaa() +
+      UusimaaNumber() +
       '</span>' +
       ' työpaikkaa.';
 
     function filterByLocationAndImg(workplaces) {
       //Kaikki kaupungit uudelta maalta:
-      const OnlyUusimaa1 =
+      const OnlyUusimaa2 =
         workplaces.Location === 'Espoo' ||
         workplaces.Location === 'Helsinki' ||
         workplaces.Location === 'Helsinki' ||
@@ -88,7 +94,7 @@ fetch(proxyURL + url)
 
       //Kaikki kuvalliset työpaikkailmoitukset Uudeltamaalta:
       if (workplaces.LogoAbsoluteUrl !== '') {
-        if (OnlyUusimaa1) {
+        if (OnlyUusimaa2) {
           // console.log('Uusimaan kohteet: ' + workplaces.Location);
           return workplaces;
         } else {
@@ -99,21 +105,21 @@ fetch(proxyURL + url)
 
     const OnlyUusimaa = workplaces.filter(filterByLocationAndImg);
 
-    // var MappingThrough = OnlyUusimaa.map(function(workplace) {
-    //   //Map throug the results and for each run the code below
+    let MappingThrough = OnlyUusimaa.map(function(workplace) {
+      //Map throug the results and for each run the code below
 
-    //   let li = createNode('li'), // Create the elements we need
-    //     img = createNode('img'),
-    //     span = createNode('span');
-    //   div = createNode('div');
+      // let li = createNode('li'), // Create the elements we need
+      //   img = createNode('img'),
+      //   span = createNode('span');
+      // div = createNode('div');
 
-    //   span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" >
-    //       Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
+      // span.innerHTML = `<img src="${workplace.LogoAbsoluteUrl}" >
+      //     Nimike: ${workplace.Title}: <br><br>`; //Make the HTML of our span to be the first and last name of our author
 
-    //   return workplace;
-    // });
+      return workplace;
+    });
 
-    OnlyUusimaa.forEach(function(workplace) {
+    MappingThrough.forEach(function(workplace) {
       $(
         '<div class="item">' +
           '<div class="logo"><img src="' +
